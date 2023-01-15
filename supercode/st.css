@@ -213,6 +213,11 @@ body {
     .r, .p {
         height: 2.5rem;
     }
+    .modal-container{
+        width: 90%;
+        background-color: darkgray;
+        padding: 2rem;
+      }
 
  
     

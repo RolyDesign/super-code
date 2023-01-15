@@ -31,9 +31,9 @@ body {
 }
 
 .caja {
-    width: 40%;
-    max-width: 20.2rem;
-    min-width: 20.2rem;
+   
+    max-width: 25.2rem;
+    min-width: 25.2rem;
     padding: 2rem 1.5rem;
     background-color: rgb(136, 136, 136);
     border-radius: 20px;
@@ -105,12 +105,12 @@ body {
     border-radius: 3rem;
     margin:0;
     padding: 0.8rem;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.3rem
+    display: flex;
+    justify-content: space-evenly;
 }
 .btn-select-color{
     height: 1.5rem;
+    width: 1.5rem;
     border-radius: 50%;
 }
 

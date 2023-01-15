@@ -1,5 +1,5 @@
 // template html
-    // <div id="pantalla1" class="pantallas">
+    //        <div id="pantalla1" class="pantallas">
     //             <div  class="p">
     //                 <div id="pantalla1-color1" class="input-user"></div>
     //                 <div id="pantalla1-color2" class="input-user"></div>

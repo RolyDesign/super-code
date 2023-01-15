@@ -44,9 +44,10 @@ body {
 
 .pantallas {
     display: grid;
-    grid-template-columns: 1fr 5rem;
+    grid-template-columns: 1rem 1fr 5rem;
     gap: 1rem;
     margin-bottom: 0.5rem;
+    align-items: center;
 }
 
 .r {

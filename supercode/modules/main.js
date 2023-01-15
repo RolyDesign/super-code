@@ -54,6 +54,8 @@ for (let i = 0; i < CantPosibilidades; i++) {
     let $pantallaContainer = document.createElement("div");
     let $pantallaContentP = document.createElement("div");
     let $pantallaContentR = document.createElement("div");
+    let $pantallaContentEnum = document.createElement("h2");
+    
     let inserts=[];
     let evals =[];
     let evalCpu1 =[];
@@ -111,11 +113,12 @@ for (let i = 0; i < CantPosibilidades; i++) {
         }
         $pantallaContentR.appendChild(evalDiv)
     })
-
-    $pantallaContainer.appendChild($pantallaContentP)
-    $pantallaContainer.appendChild($pantallaContentR)
-    $fragment.appendChild($pantallaContainer)
-    cont++
+    $pantallaContentEnum.textContent = i + 1;
+    $pantallaContainer.appendChild($pantallaContentEnum);
+    $pantallaContainer.appendChild($pantallaContentP);
+    $pantallaContainer.appendChild($pantallaContentR);
+    $fragment.appendChild($pantallaContainer);
+    cont++;
 };
 
 $display.appendChild($fragment)

@@ -135,6 +135,7 @@ const openGame = () => {
                 insertValue.classList.remove(`btn-${lastInsert}`);
                 jugada--;
             }
+            
     })
     
    

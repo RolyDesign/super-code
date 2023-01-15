@@ -151,7 +151,7 @@ body {
     justify-content: center;
     background-color: rgb(0, 0, 0);
   }
-  .modal-container{
+   .modal-container{
     width: 30rem;
     background-color: darkgray;
     padding: 2rem;
@@ -159,6 +159,14 @@ body {
   }
   .modal-content{
     color: rgb(53, 53, 53);
+  }
+  #modal_select_mode p{
+    margin-top: 1rem;
+    text-align: center;
+  }
+  #modal_select_mode .actions-init{
+    display: flex;
+    justify-content: space-evenly;
   }
   .actions-init{
     margin-top: 1.5rem;
@@ -185,6 +193,9 @@ body {
    text-align: start;
    margin-bottom: 0.5rem;
   }
+  .text-winned{
+    font-size: 1rem;
+  }
 
   .none{
     display: none;
@@ -196,9 +207,6 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-  }
-  .text-winned{
-    font-size: 1.5rem;
   }
   .bottom-spacer{
     margin-bottom: 2rem;
@@ -249,32 +257,33 @@ body {
         padding: 2rem;
       }
 
-      .actions-init{
+    .actions-init{
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between !important;
         margin-top: 2rem;
-    
-      }
-      .actions-init button{
-        width: 4rem;
-        padding: 0.5rem;
-      }
-
-      .sentimiento{
-        width: 80px;
-        height: 80px;
-      }
-      #game_again button{
-        width:10rem;
-      }
-      #modal_winned .title{
+        
+    }
+    .actions-init button{
+        width: 5rem;
+        
+    }
+    .sentimiento{
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0;
+    }
+    #game_again button{
+        width:7rem;
+    }
+    #modal_winned .title{
         font-size: 2rem;
-      }
-      .text-winned{
+    }
+    #modal_winned .modal-content{
+       align-items: center;
+    }
+    .text-winned{
         font-size: 1rem;
-      }
-
- 
+    }
     
   }
 

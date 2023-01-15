@@ -219,6 +219,17 @@ body {
         padding: 2rem;
       }
 
+      .actions-init{
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 2rem;
+    
+      }
+      .actions-init button{
+        width: 4rem;
+        padding: 0.5rem;
+      }
+
  
     
   }

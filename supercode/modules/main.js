@@ -127,18 +127,28 @@ $display.appendChild($fragment)
 
 // initGame
 const openGame = () => {
+    let $undo = document.querySelector('.undo');
+        $undo.addEventListener('click', e =>{
+            if(insertValueUser.length !== 0){
+                let insertValue = document.getElementById(`pantalla${posibildad}-color${jugada - 1}`)
+                let lastInsert = insertValueUser.pop();
+                insertValue.classList.remove(`btn-${lastInsert}`);
+                jugada--;
+            }
+    })
+    
+   
     if(CantPosibilidades > 0){
         numHiddenGenerator()
         console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
         let $btn = document.getElementById('btn')
         $btn.addEventListener('click', e => {
-            
             const t = e.target,
                   d = t.dataset;
-                 
             if(posibildad <= CantPosibilidades && !winned){
                 if(t.matches('button')){
                     write(d.number, posibildad)
+                    
                 }
             }
         })
@@ -152,7 +162,6 @@ const numHiddenGenerator = () => {
     hidden3 = parseInt(Math.random() * 6 + 1);
     hidden4 = parseInt(Math.random() * 6 + 1);
 }
-
 // insertColors
 const write = (number, pos) => {
     

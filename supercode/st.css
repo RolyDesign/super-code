@@ -230,6 +230,20 @@ body {
         padding: 0.5rem;
       }
 
+      .sentimiento{
+        width: 80px;
+        height: 80px;
+      }
+      #game_again button{
+        width:10rem;
+      }
+      #modal_winned .title{
+        font-size: 2rem;
+      }
+      .text-winned{
+        font-size: 1rem;
+      }
+
  
     
   }

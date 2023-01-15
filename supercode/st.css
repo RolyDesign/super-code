@@ -4,7 +4,6 @@
     box-sizing: border-box; 
 }
 body {
-    height: 100vh;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -188,5 +187,34 @@ body {
   }
   .bottom-spacer{
     margin-bottom: 2rem;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .d-flex{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    body{
+        overflow: hidden !important;
+    }
+    /* For mobile phones: */
+    .caja {
+        max-width: 90vw;
+        min-width: 90vw;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .pantallas {
+        grid-template-columns: 0.5rem 1fr 5rem;
+    }
+    .r, .p {
+        height: 2.5rem;
+    }
+
+ 
+    
   }
 

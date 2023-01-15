@@ -8,15 +8,8 @@ let jugada = 1;
 let insertValueUser = [];
 let winned = false;
 
-
-
-
 // execute program
 export const executeProgram = () => {
-    let $youWin = document.getElementById('modal_winned') 
-    $youWin.classList.add('none')
-
-    
     game_mode.addEventListener('click', e => {
         const t = e.target,
         d = t.dataset
@@ -41,7 +34,6 @@ const playAgain = () => {
     $display.replaceChildren();
     printView();
     numHiddenGenerator()
-    console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
 }
 
 // Print DynamicView
@@ -127,6 +119,14 @@ $display.appendChild($fragment)
 
 // initGame
 const openGame = () => {
+    numHiddenGenerator()
+    let $youWinModal = document.getElementById('modal_winned') ;
+    $youWinModal.addEventListener('click', e => {
+        const t = e.target;
+        if(t.matches('button')){
+            playAgain();
+        }
+    }) 
     let $undo = document.querySelector('.undo');
         $undo.addEventListener('click', e =>{
             if(insertValueUser.length !== 0){
@@ -135,13 +135,10 @@ const openGame = () => {
                 insertValue.classList.remove(`btn-${lastInsert}`);
                 jugada--;
             }
-            
+
     })
     
-   
-    if(CantPosibilidades > 0){
-        numHiddenGenerator()
-        console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
+        
         let $btn = document.getElementById('btn')
         $btn.addEventListener('click', e => {
             const t = e.target,
@@ -153,7 +150,7 @@ const openGame = () => {
                 }
             }
         })
-    }
+    
 }
 
 //Generar valores ocultos
@@ -162,6 +159,7 @@ const numHiddenGenerator = () => {
     hidden2 = parseInt(Math.random() * 6 + 1);
     hidden3 = parseInt(Math.random() * 6 + 1);
     hidden4 = parseInt(Math.random() * 6 + 1);
+    console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
 }
 // insertColors
 const write = (number, pos) => {
@@ -199,13 +197,7 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $title.textContent = ' Uppss!!!'
         $textWinned.textContent = 'Has perdido, no te rindas'
         $youWin.classList.remove('none');
-        $youWin.addEventListener('click', e => {
-            const t = e.target;
-            
-            if(t.matches('button')){
-                playAgain();
-            }
-        }) 
+       
     }
 
     // si gana
@@ -223,14 +215,6 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $title.textContent = ' Bravo!!!'
         $textWinned.textContent = ' Felicidades Has Ganado'
         $youWin.classList.remove('none');
-
-        $youWin.addEventListener('click', e => {
-            const t = e.target;
-            
-            if(t.matches('button')){
-                playAgain();
-            }
-        }) 
     }
 
     //eval bien 

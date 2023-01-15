@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="st.css">
+</head>
+
+<body >
+
+    <!-- modal init -->
+    <div id="modal_select_mode" class="overlay">
+        <div class="modal-container">
+            <h2 class="title">Bienvenid@</h2>
+            <div class="modal-content">
+                <p>Selecione la Dificultad de juego deseada</p>
+                <div id="game_mode" class="actions-init">
+                    <button data-number="8">Easy </button>
+                    <button data-number="7">Middle </button>
+                    <button data-number="6">Dificult </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- modal winned -->
+    <div id="modal_winned" class="overlay">
+        <div class="modal-container">
+            <h2 class="title">Bravo!!!</h2>
+            <div class="modal-content">
+               <div class="flex-content">
+                <img class="sentimiento" src="./assets/winned.jpg" alt="">
+                <p class="text-winned">Felicidades has ganado!!!</p>
+               </div>
+                <div id="game_again" class="actions-init">
+                    <button>Volver a jugar </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- view game -->
+    <div class="d-flex">
+        <div  class="caja">
+            <div class="flex-content bottom-spacer">
+                <img width="60" height="60" src="./assets/thinking-think.gif" alt="">
+            
+                <h2 class="title">SuperCode!!! </h2>
+            </div>
+            <!-- pantallas dinamicas -->
+            <div class="display"></div>
+            <!-- pantallas dinamicas -->
+
+            <h4  class=" sub-title ">Select color</h4>
+            <div id="btn" class="btngrid">
+                <button class="btn-1 btn-select-color" data-number="1"></button>
+                <button class="btn-2 btn-select-color" data-number="2"></button>
+                <button class="btn-3 btn-select-color" data-number="3"></button>
+                <button class="btn-4 btn-select-color" data-number="4"></button>
+                <button class="btn-5 btn-select-color" data-number="5"></button>
+                <button class="btn-6 btn-select-color" data-number="6"></button>
+            </div>
+        </div>
+    
+        <div>
+            <h3>Objetivos V1.1.3</h3>
+            <ul>
+                <li>Animar botones</li>
+                <li>Modal de partida perdida</li>
+                <li>Modal de partida ganada</li>
+                <li>boton de desaser jugadaactivo hasta la 3 selecion <br>en la 4ta se evalua automaticamente </li>
+                <li>Musica de fondo loop</li>
+                <li>sonidos de accion para las animaciones</li>
+                <li>Mejorar el diseno</li>
+                <li>Incluir cronometro</li>
+                <li>Disenar un vista para el score</li>
+                <li>Rehacer partida sin refrescar el nav  </li>
+                <li>guardar score en localstorage</li>
+                <li>Publicar en gitHub Para curriculum</li>
+            </ul>
+        </div>
+      
+    
+    </div>
+
+
+    <script src="app.js" type="module" ></script>
+</body>
+
+</html>

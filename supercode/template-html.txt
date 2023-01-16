@@ -1,19 +1,19 @@
 // template html
-    //        <div id="pantalla1" class="pantallas">
-    //             <div  class="p">
-    //                 <div id="pantalla1-color1" class="input-user"></div>
-    //                 <div id="pantalla1-color2" class="input-user"></div>
-    //                 <div id="pantalla1-color3" class="input-user"></div>
-    //                 <div id="pantalla1-color4" class="input-user"></div>
-    //             </div>
-    //             <div class="r">
-    //                 <div class="eval">
-    //                     <div id="pantalla1-eval1" class="eval-cpu"></div>
-    //                     <div id="pantalla1-eval2"  class="eval-cpu"></div>
-    //                 </div>
-    //                 <div class="eval">
-    //                     <div id="pantalla1-eval3" class="eval-cpu"></div>
-    //                     <div id="pantalla1-eval4" class="eval-cpu"></div>
-    //                 </div>
-    //             </div>
-    //         </div>
+            <div id="pantalla1" class="pantallas">
+                <div  class="p">
+                    <div id="pantalla1-color1" class="input-user"></div>
+                    <div id="pantalla1-color2" class="input-user"></div>
+                    <div id="pantalla1-color3" class="input-user"></div>
+                   <div id="pantalla1-color4" class="input-user"></div>
+                </div>
+                <div class="r">
+                    <div class="eval">
+                       <div id="pantalla1-eval1" class="eval-cpu"></div>
+                       <div id="pantalla1-eval2"  class="eval-cpu"></div>
+                     </div>
+                    <div class="eval">
+                        <div id="pantalla1-eval3" class="eval-cpu"></div>
+                        <div id="pantalla1-eval4" class="eval-cpu"></div>
+                    </div>
+                </div>
+            </div>

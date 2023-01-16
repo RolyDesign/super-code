@@ -8,148 +8,101 @@ let jugada = 1;
 let insertValueUser = [];
 let winned = false;
 
+const $TemplateViewGame = document.getElementById('view-game').content,
+     $display = document.querySelector(".display"),
+     $fragmentDisplay = document.createDocumentFragment(),
+     $game_mode = document.getElementById('game_mode'),
+     $youWinModal = document.getElementById('modal_winned'),
+     $undo = document.querySelector('.undo'),
+     $btnInsertColor = document.getElementById('btn');
+
+
+
+
+
 // execute program
 export const executeProgram = () => {
-    game_mode.addEventListener('click', e => {
+    numHiddenGenerator();
+
+    $game_mode.addEventListener('click', e => {
         const t = e.target,
         d = t.dataset
          if(t.matches('button')){
             CantPosibilidades = d.number;
             let modalOpt = document.getElementById('modal_select_mode') 
             modalOpt.classList.add('none')
-            printView();
-            openGame();
+            printViewGame();
         }
     })
-}
-
-const playAgain = () => {
-    let $display = document.querySelector(".display");
-    let $youWin = document.getElementById('modal_winned') 
-    $youWin.classList.add('none');
-    posibildad = 1;
-    jugada = 1;
-    insertValueUser = [];
-    winned = false;
-    $display.replaceChildren();
-    printView();
-    numHiddenGenerator()
-}
-
-// Print DynamicView
-const printView = () =>{
-    let $fragment = document.createDocumentFragment();
-    let $display = document.querySelector(".display");
-    let cont = 1;
-
-for (let i = 0; i < CantPosibilidades; i++) {
-    let $pantallaContainer = document.createElement("div");
-    let $pantallaContentP = document.createElement("div");
-    let $pantallaContentR = document.createElement("div");
-    let $pantallaContentEnum = document.createElement("h2");
-    
-    let inserts=[];
-    let evals =[];
-    let evalCpu1 =[];
-    let evalCpu2 =[];
-    
-    for (let p = 0; p < 4; p++) {
-        let $insert = document.createElement('div');
-        $insert.classList.add('input-user');
-        $insert.setAttribute('id', `pantalla${cont}-color${p+1}`)
-        
-        inserts.push($insert)
-    }
-    
-    for (let evalue = 0; evalue < 2; evalue++) {
-        let $eval = document.createElement('div');
-        $eval.classList.add('eval');
-        evals.push($eval)
-        
-    }
-
-    for (let evalcpu1 = 0; evalcpu1 < 2; evalcpu1++) {
-        let $eval = document.createElement('div');
-        $eval.classList.add('eval-cpu');
-        $eval.setAttribute("id",`pantalla${cont}-eval${evalcpu1+1}`);
-        evalCpu1.push($eval)
-    }
-    for (let evalcpu2 = 2; evalcpu2 < 4; evalcpu2++) {
-        let $eval = document.createElement('div');
-        $eval.classList.add('eval-cpu');
-        $eval.setAttribute("id",`pantalla${cont}-eval${evalcpu2+1}`);
-        evalCpu2.push($eval)
-    }
-
-
-    $pantallaContainer.classList.add(`pantallas`);
-    $pantallaContainer.setAttribute("id",`pantalla${i+1}`);
-    $pantallaContentP.classList.add('p');
-    $pantallaContentR.classList.add('r')
-    
-
-    inserts.forEach((el, i)=>{
-        $pantallaContentP.appendChild(el)
-    })
-    evals.forEach((el,index) =>{
-        let evalDiv = el;
-        if(index == 0){
-            evalCpu1.forEach(el=>{
-                evalDiv.appendChild(el);
-            })
-        }
-        if(index == 1){
-            evalCpu2.forEach(el=>{
-                evalDiv.appendChild(el);
-            })
-        }
-        $pantallaContentR.appendChild(evalDiv)
-    })
-    $pantallaContentEnum.textContent = i + 1;
-    $pantallaContainer.appendChild($pantallaContentEnum);
-    $pantallaContainer.appendChild($pantallaContentP);
-    $pantallaContainer.appendChild($pantallaContentR);
-    $fragment.appendChild($pantallaContainer);
-    cont++;
-};
-
-$display.appendChild($fragment)
-
-}
-
-// initGame
-const openGame = () => {
-    numHiddenGenerator()
-    let $youWinModal = document.getElementById('modal_winned') ;
+   
     $youWinModal.addEventListener('click', e => {
         const t = e.target;
         if(t.matches('button')){
             playAgain();
         }
     }) 
-    let $undo = document.querySelector('.undo');
-        $undo.addEventListener('click', e =>{
-            if(insertValueUser.length !== 0){
-                let insertValue = document.getElementById(`pantalla${posibildad}-color${jugada - 1}`)
-                let lastInsert = insertValueUser.pop();
-                insertValue.classList.remove(`btn-${lastInsert}`);
-                jugada--;
-            }
-
+    $undo.addEventListener('click', () =>{
+        if(insertValueUser.length !== 0){
+            let insertValue = document.getElementById(`pantalla${posibildad}-color${jugada - 1}`)
+            let lastInsert = insertValueUser.pop();
+            insertValue.classList.remove(`btn-${lastInsert}`);
+            jugada--;
+        } 
     })
+   
+    $btnInsertColor.addEventListener('click', e => {
+        const t = e.target,
+              d = t.dataset;
+        if(posibildad <= CantPosibilidades && !winned){
+            if(t.matches('button')){
+                write(d.number, posibildad)
+                
+            }
+        }
+    })
+}
     
         
-        let $btn = document.getElementById('btn')
-        $btn.addEventListener('click', e => {
-            const t = e.target,
-                  d = t.dataset;
-            if(posibildad <= CantPosibilidades && !winned){
-                if(t.matches('button')){
-                    write(d.number, posibildad)
-                    
-                }
-            }
+      
+
+const playAgain = () => {
+    $youWinModal.classList.add('none');
+    posibildad = 1;
+    jugada = 1;
+    insertValueUser = [];
+    winned = false;
+    for (let i = 0; i < CantPosibilidades; i++) {
+        $display.removeChild($display.firstElementChild)
+    }
+    
+    printViewGame();
+    numHiddenGenerator()
+}
+
+// Print DynamicView
+
+const printViewGame = () =>{
+    for (let i = 0; i < CantPosibilidades; i++) {
+        $TemplateViewGame.querySelector('.pantallas').setAttribute('id',`pantalla${i + 1}`);
+        $TemplateViewGame.querySelector('h2').textContent = i + 1
+        $TemplateViewGame.querySelectorAll('.input-user').forEach((el, index) => {
+            el.setAttribute('id',`pantalla${i + 1 }-color${index + 1 }`)
+        });
+
+        $TemplateViewGame.querySelectorAll('.eval-cpu').forEach((el,index)=>{
+            el.setAttribute('id',`pantalla${i + 1 }-eval${index + 1 }`)
         })
+        let $cloneTemplate = document.importNode($TemplateViewGame, true);
+        $fragmentDisplay.append($cloneTemplate);
+    }
+    console.log($fragmentDisplay.content)
+    $display.append($fragmentDisplay)
+
+}
+
+// initGame
+const openGame = () => {
+   
     
 }
 
@@ -189,14 +142,14 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
  
     //si pierde
     if(posibildad == CantPosibilidades && !winned){
-        let $youWin = document.getElementById('modal_winned') ;
+      
         let $textWinned =document.querySelector('.text-winned');
         let $title = document.querySelector('#modal_winned .title');
         let $sentimiento = document.querySelector('#modal_winned .sentimiento');
         $sentimiento.setAttribute('src', './assets/crying-sobbing.gif' )
         $title.textContent = ' Uppss!!!'
         $textWinned.textContent = 'Has perdido, no te rindas'
-        $youWin.classList.remove('none');
+        $youWinModal.classList.remove('none');
        
     }
 
@@ -206,15 +159,13 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         posEvalue2.classList.add('bien');
         posEvalue3.classList.add('bien');
         posEvalue4.classList.add('bien');
-
-        let $youWin = document.getElementById('modal_winned');
         let $textWinned =document.querySelector('.text-winned');
         let $title = document.querySelector('#modal_winned .title');
         let $sentimiento = document.querySelector('#modal_winned .sentimiento');
         $sentimiento.setAttribute('src', './assets/hasher-happy-sticker.gif' )
         $title.textContent = ' Bravo!!!'
         $textWinned.textContent = ' Felicidades Has Ganado'
-        $youWin.classList.remove('none');
+        $youWinModal.classList.remove('none');
     }
 
     //eval bien 

@@ -1,13 +1,4 @@
-let CantPosibilidades = 0;
-let hidden1,
-    hidden2,
-    hidden3,
-    hidden4;
-let posibildad = 1;
-let jugada = 1;
-let insertValueUser = [];
-let winned = false;
-
+//DOM AccessElement
 const $TemplateViewGame = document.getElementById('view-game').content,
      $display = document.querySelector(".display"),
      $fragmentDisplay = document.createDocumentFragment(),
@@ -16,9 +7,14 @@ const $TemplateViewGame = document.getElementById('view-game').content,
      $undo = document.querySelector('.undo'),
      $btnInsertColor = document.getElementById('btn');
 
-
-
-
+let CantPosibilidades = 0;
+let hidden1,
+    hidden2,
+    hidden3,
+    hidden4;
+let posibildad = 1;
+let jugada = 1;
+let insertValueUser = [];
 
 // execute program
 export const executeProgram = () => {
@@ -53,7 +49,7 @@ export const executeProgram = () => {
     $btnInsertColor.addEventListener('click', e => {
         const t = e.target,
               d = t.dataset;
-        if(posibildad <= CantPosibilidades && !winned){
+        if(posibildad <= CantPosibilidades ){
             if(t.matches('button')){
                 write(d.number, posibildad)
                 
@@ -61,20 +57,15 @@ export const executeProgram = () => {
         }
     })
 }
-    
-        
-      
 
 const playAgain = () => {
     $youWinModal.classList.add('none');
     posibildad = 1;
     jugada = 1;
     insertValueUser = [];
-    winned = false;
     for (let i = 0; i < CantPosibilidades; i++) {
         $display.removeChild($display.firstElementChild)
     }
-    
     printViewGame();
     numHiddenGenerator()
 }
@@ -94,9 +85,7 @@ const printViewGame = () =>{
         let $cloneTemplate = document.importNode($TemplateViewGame, true);
         $fragmentDisplay.append($cloneTemplate);
     }
-    console.log($fragmentDisplay.content)
     $display.append($fragmentDisplay)
-
 }
 
 //Generar valores ocultos

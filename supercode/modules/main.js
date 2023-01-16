@@ -80,7 +80,6 @@ const playAgain = () => {
 }
 
 // Print DynamicView
-
 const printViewGame = () =>{
     for (let i = 0; i < CantPosibilidades; i++) {
         $TemplateViewGame.querySelector('.pantallas').setAttribute('id',`pantalla${i + 1}`);
@@ -98,12 +97,6 @@ const printViewGame = () =>{
     console.log($fragmentDisplay.content)
     $display.append($fragmentDisplay)
 
-}
-
-// initGame
-const openGame = () => {
-   
-    
 }
 
 //Generar valores ocultos

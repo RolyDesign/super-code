@@ -10,10 +10,14 @@ const $TemplateViewGame = document.getElementById('view-game').content,
      $btnInsertColor = document.getElementById('btn'),
      $btnConfirm =document.getElementById('btn_confirm'),
      $time = document.getElementById('time'),
-     $btnsAction = document.querySelector('.btns-action');
+     $btnsAction = document.querySelector('.btns-action'),
+     $score = document.getElementById('score');
 
 let CantPosibilidades = 0;
 let hiddens = [];
+let intervalTime;
+let TranscurredTime = 0;
+
    
 let posibildad = 1;
 let jugada = 1;
@@ -26,7 +30,7 @@ const timeExec = () => {
     seconds,
     minutes,
     hours;
-    setInterval(() => {
+    intervalTime = setInterval(() => {
         //seconds
         if(countSeconds < 10 ){
             seconds = `0${countSeconds}`
@@ -60,13 +64,16 @@ const timeExec = () => {
         }
         $time.textContent = `${hours}:${minutes}:${seconds}`
     }, 1000);
+    TranscurredTime =  (hours * 60) + minutes + (1 / seconds);
     
 }
 
 // execute program
 export const executeProgram = () => {
+    if(window.localStorage.getItem('SC-Score') == null){
+        window.localStorage.setItem('SC-Score','0');
+    }
     numHiddenGenerator();
-    
     $game_mode.addEventListener('click', e => {
         const t = e.target,
         d = t.dataset
@@ -81,6 +88,7 @@ export const executeProgram = () => {
         const t = e.target;
         if(t.matches('button')){
             playAgain();
+            
         }
     }) 
     $btnConfirm.addEventListener('click', e => {
@@ -141,6 +149,7 @@ const playAgain = () => {
     posibildad = 1;
     jugada = 1;
     insertValueUser = [];
+    TranscurredTime=0;
     for (let i = 0; i < CantPosibilidades; i++) {
         $display.removeChild($display.firstElementChild)
     }
@@ -150,7 +159,6 @@ const playAgain = () => {
 
 // Print DynamicView
 const printViewGame = () =>{
-
     for (let i = 0; i < CantPosibilidades; i++) {
         $TemplateViewGame.querySelector('.pantallas').setAttribute('id',`pantalla${i + 1}`);
         $TemplateViewGame.querySelector('h4').textContent = i + 1
@@ -167,6 +175,7 @@ const printViewGame = () =>{
     $display.append($fragmentDisplay);
     $time.textContent = `00:00:00`
     timeExec();
+    $score.textContent = window.localStorage.getItem('SC-Score')+"pts";
 }
 
 //Generar valores ocultos
@@ -203,6 +212,7 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $youWinModal.querySelector('.sentimiento').setAttribute('src', './assets/crying-sobbing.gif' );
         $youWinModal.querySelector('button').textContent= 'Volver a jugar';
         $youWinModal.classList.remove('none');
+        clearInterval(intervalTime);
     }
 
     // si gana then
@@ -216,6 +226,8 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $youWinModal.querySelector('.sentimiento').setAttribute('src', './assets/hasher-happy-sticker.gif' );
         $youWinModal.querySelector('button').textContent= 'Volver a jugar';
         $youWinModal.classList.remove('none');
+        clearInterval(intervalTime);
+        CalcScore(posibildad)
     }
 
     //eval bien 
@@ -395,6 +407,17 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
     posEvalue4.classList.add('bien')
   }
 };
+
+
+
+
+
+const CalcScore = (pos) => {
+    let score = ((6000 / CantPosibilidades) * pos) + parseInt(window.localStorage.getItem('SC-Score')) ;
+    window.localStorage.setItem('SC-Score',`${score}`)
+  
+    return score
+}
 
 
 

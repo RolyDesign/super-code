@@ -5,8 +5,10 @@ const $TemplateViewGame = document.getElementById('view-game').content,
      $fragmentDisplay = document.createDocumentFragment(),
      $game_mode = document.getElementById('game_mode'),
      $youWinModal = document.getElementById('mod_winned'),
-     $undo = document.querySelector('.undo'),
-     $btnInsertColor = document.getElementById('btn');
+     $modAlert = document.getElementById('mod_alert'),
+     $btnInsertColor = document.getElementById('btn'),
+     $btnConfirm =document.getElementById('btn_confirm'),
+     $btnsAction = document.querySelector('.btns-action');
 
 let CantPosibilidades = 0;
 let hidden1,
@@ -37,13 +39,43 @@ export const executeProgram = () => {
             playAgain();
         }
     }) 
-    $undo.addEventListener('click', () =>{
-        if(insertValueUser.length !== 0){
-            let insertValue = document.getElementById(`pantalla${posibildad}-color${jugada - 1}`)
-            let lastInsert = insertValueUser.pop();
-            insertValue.classList.remove(`btn-${lastInsert}`);
-            jugada--;
-        } 
+    $btnConfirm.addEventListener('click', e => {
+        const t = e.target,
+        d = t.dataset
+         if(t.matches('button')){
+            if(d.number == 0){
+                playAgain();
+                $modAlert.classList.add('none');
+            }else{
+                $modAlert.classList.add('none');
+            }
+         }
+    })
+
+    $btnsAction.addEventListener('click', e => {
+        const t = e.target,
+        d = t.dataset;
+        if(t.matches('button')){
+            if(d.number == 1){
+                if(insertValueUser.length !== 0){
+                    let insertValue = document.getElementById(`pantalla${posibildad}-color${jugada - 1}`)
+                    let lastInsert = insertValueUser.pop();
+                    insertValue.classList.remove(`btn-${lastInsert}`);
+                    jugada--;
+                } 
+            }else if(d.number == 2){
+                $modAlert.classList.remove('none')
+
+            }else{
+                if(insertValueUser.length == 4){
+                    evalue(insertValueUser[0], insertValueUser[1], insertValueUser[2], insertValueUser[3], hidden1,hidden2, hidden3, hidden4,posibildad);
+                    jugada=1;
+                    posibildad++;
+                    insertValueUser=[];
+                }
+                
+            }
+        }
     })
    
     $btnInsertColor.addEventListener('click', e => {
@@ -51,7 +83,9 @@ export const executeProgram = () => {
               d = t.dataset;
         if(posibildad <= CantPosibilidades ){
             if(t.matches('button')){
-                write(d.number, posibildad)
+                if(jugada <= 4){
+                    write(d.number, posibildad)
+                }
                 
             }
         }
@@ -98,18 +132,23 @@ const numHiddenGenerator = () => {
 }
 // insertColors
 const write = (number, pos) => {
-    
-    let insertValue = document.getElementById(`pantalla${pos}-color${jugada}`)
-    insertValue.classList.add(`btn-${number}`)
+    console.log('escribiendo')
+    let $insertValue = document.getElementById(`pantalla${pos}-color${jugada}`)
+    $insertValue.classList.add(`btn-${number}`)
     jugada++
     insertValueUser.push(number)
     
-    if (insertValueUser.length == 4) {
-        evalue(insertValueUser[0], insertValueUser[1], insertValueUser[2], insertValueUser[3], hidden1,hidden2, hidden3, hidden4,pos);
-            jugada=1;
-            posibildad++;
-            insertValueUser=[];
-    }
+    // if (insertValueUser.length == 4) {
+    //    let $btnsInsertColor = $btnInsertColor.querySelectorAll('.btn-select-color');
+    //     $btnsInsertColor.forEach((el)=>{
+    //         el.setAttribute('disable',true)
+    //     })
+    //     // evalue(insertValueUser[0], insertValueUser[1], insertValueUser[2], insertValueUser[3], hidden1,hidden2, hidden3, hidden4,pos);
+    //     //     jugada=1;
+    //     //     posibildad++;
+    //     //     insertValueUser=[];
+    // }
+   
 }
 
 // evalue
@@ -128,6 +167,7 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $youWinModal.querySelector('.text-winned').textContent = 'Has perdido, no te rindas';
         $youWinModal.querySelector('.title').textContent = ' Uppss!!!';
         $youWinModal.querySelector('.sentimiento').setAttribute('src', './assets/crying-sobbing.gif' );
+        $youWinModal.querySelector('button').textContent= 'Volver a jugar';
         $youWinModal.classList.remove('none');
     }
 
@@ -140,6 +180,7 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $youWinModal.querySelector('.text-winned').textContent = ' Felicidades Has Ganado';
         $youWinModal.querySelector('.title').textContent = ' Bravo!!!';
         $youWinModal.querySelector('.sentimiento').setAttribute('src', './assets/hasher-happy-sticker.gif' );
+        $youWinModal.querySelector('button').textContent= 'Volver a jugar';
         $youWinModal.classList.remove('none');
     }
 

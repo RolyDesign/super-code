@@ -9,7 +9,6 @@
 </head>
 
 <body >
-
     <!-- modal init -->
     <div id="mod_select_mode" class="overlay">
         <div class="mod-container">
@@ -25,19 +24,33 @@
         </div>
     </div>
 <!-- modal winned -->
-    <div id="mod_winned" class="overlay none">
+    <div id="mod_winned" class="overlay none mod_winned">
         <div class="mod-container">
-            
             <div class="mod-content">
                 <img class="sentimiento" src="./assets/winned.jpg" alt="">
                <div>
                 <h2 class="title">Bravo!!!</h2>
                 <p class="text-winned">Felicidades has ganado!!!</p>
                 <div id="game_again" class="actions-init">
-                    <button>Volver a jugar </button>
+                    <button> </button>
                 </div>
                </div>
-                
+            </div>
+        </div>
+    </div>
+<!-- modal alerta -->
+    <div id="mod_alert" class="overlay mod_winned none">
+        <div class="mod-container">
+            <div class="mod-content">
+                <img class="sentimiento" src="./assets/download (1).jpg" alt="">
+               <div>
+                <h2 class="title">Alerta!!!</h2>
+                <p class="text-alert">Seguro de cancelar la partida</p>
+                <div id="btn_confirm" class="actions-init">
+                    <button data-number="0">Si </button>
+                    <button data-number="1">No </button>
+                </div>
+               </div>
             </div>
         </div>
     </div>
@@ -47,9 +60,7 @@
         <div  class="caja text-primary">
             <div class="flex-content bottom-spacer">
                 <img width="60" height="60" src="./assets/thinking-think.gif" alt="">
-            
                 <h2 class="title">SuperCode!!! </h2>
-                <button class="undo"><img src="./assets/png-transparent-computer-icons-undo-arrow-button-circular-angle-text-monochrome-thumbnail.png" alt=""></button>
             </div>
             <!-- pantallas dinamicas -->
             <div class="display"></div>
@@ -84,6 +95,11 @@
                 <button class="btn-4 btn-select-color" data-number="4"></button>
                 <button class="btn-5 btn-select-color" data-number="5"></button>
                 <button class="btn-6 btn-select-color" data-number="6"></button>
+            </div>
+            <div class="btns-action">
+                <button data-number="1" class="btn-action">Atras</button>
+                <button data-number="2" class="btn-action">Comenzar</button>
+                <button data-number="3" class="btn-action">Evaluar</button>
             </div>
         </div>
     </div>

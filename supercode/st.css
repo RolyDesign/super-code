@@ -176,22 +176,25 @@ body {
     padding: 0.5rem;
     border-radius: 0.5rem;
   }
-  #mod_winned{
+  .mod_winned{
     background-color: rgba(0, 0, 0, 0.349);
   }
-  #mod_winned .mod-content{
+  .mod_winned .mod-content{
     display: flex;
     justify-content: center;
   }
-  #mod_winned img{
+  .mod_winned img{
     width: 150px;
     height:150px;
     margin-right: 1.5rem;
     margin-top: -1.5rem;
   }
-  #mod_winned .title{
+  .mod_winned .title{
    text-align: start;
    margin-bottom: 0.5rem;
+  }
+  .mod_winned button{
+    width: max-content;
   }
   .text-winned{
     font-size: 1rem;
@@ -211,23 +214,19 @@ body {
   .bottom-spacer{
     margin-bottom: 2rem;
   }
-  .undo{
-    padding: 0.8rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+  .btns-action{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    justify-content: space-evenly;
+    margin: 1.5rem 0;
   }
-  .undo img{
-    width: 30px;
-    height: 30px;
+  .btns-action button{
+    width: 5rem;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    outline: none;
   }
   
-  
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 500px) {
     .dis-flex{
         height: 100vh;
         width: 100vw;
@@ -272,13 +271,11 @@ body {
         height: 100px !important;
         margin: 0;
     }
-    #game_again button{
-        width:7rem;
-    }
-    #mod_winned .title{
+   
+    .mod_winned .title{
         font-size: 2rem;
     }
-    #mod_winned .mod-content{
+    .mod_winned .mod-content{
        align-items: center;
     }
     .text-winned{

@@ -122,7 +122,7 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
     let resBien = 0;
     let resReg = 0;
  
-    //si pierde
+    //si pierde then
     if(posibildad == CantPosibilidades){
       
         $youWinModal.querySelector('.text-winned').textContent = 'Has perdido, no te rindas';
@@ -131,7 +131,7 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $youWinModal.classList.remove('none');
     }
 
-    // si gana
+    // si gana then
     if (e1 == h1 && e2 == h2 && e3 == h3 && e4 == h4) {
         posEvalue1.classList.add('bien');
         posEvalue2.classList.add('bien');

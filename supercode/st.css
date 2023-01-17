@@ -278,6 +278,9 @@ body {
     .mod_winned .title{
         font-size: 2rem;
     }
+    .mod_winned button{
+      width: max-content;
+  }
     .mod_winned .mod-content{
        align-items: center;
     }

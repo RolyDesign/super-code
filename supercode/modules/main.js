@@ -128,7 +128,7 @@ const numHiddenGenerator = () => {
     hidden2 = parseInt(Math.random() * 6 + 1);
     hidden3 = parseInt(Math.random() * 6 + 1);
     hidden4 = parseInt(Math.random() * 6 + 1);
-    //console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
+    console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
 }
 // insertColors
 const write = (number, pos) => {

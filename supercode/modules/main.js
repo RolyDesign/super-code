@@ -55,7 +55,7 @@ export const executeProgram = () => {
     $btnsAction.addEventListener('click', e => {
         const t = e.target,
         d = t.dataset;
-        if(t.matches('button')){
+        if(t.matches('button') || t.matches('i')){
             if(d.number == 1){
                 if(insertValueUser.length !== 0){
                     let insertValue = document.getElementById(`pantalla${posibildad}-color${jugada - 1}`)

@@ -4,8 +4,9 @@ const $TemplateViewGame = document.getElementById('view-game').content,
      $display = document.querySelector(".display"),
      $fragmentDisplay = document.createDocumentFragment(),
      $game_mode = document.getElementById('game_mode'),
-     $youWinModal = document.getElementById('mod_winned'),
      $modAlert = document.getElementById('mod_alert'),
+     $youWinModal = document.getElementById('mod_winned'),
+     $btnPlayAgain =document.getElementById('game_again'),
      $btnInsertColor = document.getElementById('btn'),
      $btnConfirm =document.getElementById('btn_confirm'),
      $btnsAction = document.querySelector('.btns-action');
@@ -22,7 +23,6 @@ let insertValueUser = [];
 // execute program
 export const executeProgram = () => {
     numHiddenGenerator();
-
     $game_mode.addEventListener('click', e => {
         const t = e.target,
         d = t.dataset
@@ -33,7 +33,7 @@ export const executeProgram = () => {
         }
     })
    
-    $youWinModal.addEventListener('click', e => {
+    $btnPlayAgain.addEventListener('click', e => {
         const t = e.target;
         if(t.matches('button')){
             playAgain();
@@ -128,11 +128,10 @@ const numHiddenGenerator = () => {
     hidden2 = parseInt(Math.random() * 6 + 1);
     hidden3 = parseInt(Math.random() * 6 + 1);
     hidden4 = parseInt(Math.random() * 6 + 1);
-    console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
+    //console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
 }
 // insertColors
 const write = (number, pos) => {
-    console.log('escribiendo')
     let $insertValue = document.getElementById(`pantalla${pos}-color${jugada}`)
     $insertValue.classList.add(`btn-${number}`)
     jugada++

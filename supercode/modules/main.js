@@ -9,20 +9,64 @@ const $TemplateViewGame = document.getElementById('view-game').content,
      $btnPlayAgain =document.getElementById('game_again'),
      $btnInsertColor = document.getElementById('btn'),
      $btnConfirm =document.getElementById('btn_confirm'),
+     $time = document.getElementById('time'),
      $btnsAction = document.querySelector('.btns-action');
 
 let CantPosibilidades = 0;
-let hidden1,
-    hidden2,
-    hidden3,
-    hidden4;
+let hiddens = [];
+   
 let posibildad = 1;
 let jugada = 1;
 let insertValueUser = [];
 
+const timeExec = () => {
+    let countSeconds = 1,
+    countMinutes = 0,
+    countHours = 0,
+    seconds,
+    minutes,
+    hours;
+    setInterval(() => {
+        //seconds
+        if(countSeconds < 10 ){
+            seconds = `0${countSeconds}`
+            countSeconds++
+        }else{
+            seconds = countSeconds
+            countSeconds++
+        }
+        if(countSeconds == 61){
+            seconds = '00';
+            countSeconds = 1;
+            countMinutes++
+        }
+        //minutes
+     
+        if(countMinutes < 10 ){
+            minutes = `0${countMinutes}`
+        }else{
+            minutes = countMinutes;
+        }
+        if(countMinutes == 60){
+            countHours++
+            minutes = '00';
+            countMinutes = 0
+        }
+        //hours
+        if(countHours < 10 ){
+            hours = `0${countHours}`
+        }else{
+            hours = countHours;
+        }
+        $time.textContent = `${hours}:${minutes}:${seconds}`
+    }, 1000);
+    
+}
+
 // execute program
 export const executeProgram = () => {
     numHiddenGenerator();
+    
     $game_mode.addEventListener('click', e => {
         const t = e.target,
         d = t.dataset
@@ -68,7 +112,7 @@ export const executeProgram = () => {
 
             }else{
                 if(insertValueUser.length == 4){
-                    evalue(insertValueUser[0], insertValueUser[1], insertValueUser[2], insertValueUser[3], hidden1,hidden2, hidden3, hidden4,posibildad);
+                    evalue(insertValueUser[0], insertValueUser[1], insertValueUser[2], insertValueUser[3],hiddens[0], hiddens[1], hiddens[2], hiddens[3] ,posibildad);
                     jugada=1;
                     posibildad++;
                     insertValueUser=[];
@@ -106,9 +150,10 @@ const playAgain = () => {
 
 // Print DynamicView
 const printViewGame = () =>{
+
     for (let i = 0; i < CantPosibilidades; i++) {
         $TemplateViewGame.querySelector('.pantallas').setAttribute('id',`pantalla${i + 1}`);
-        $TemplateViewGame.querySelector('h2').textContent = i + 1
+        $TemplateViewGame.querySelector('h4').textContent = i + 1
         $TemplateViewGame.querySelectorAll('.input-user').forEach((el, index) => {
             el.setAttribute('id',`pantalla${i + 1 }-color${index + 1 }`)
         });
@@ -119,16 +164,18 @@ const printViewGame = () =>{
         let $cloneTemplate = document.importNode($TemplateViewGame, true);
         $fragmentDisplay.append($cloneTemplate);
     }
-    $display.append($fragmentDisplay)
+    $display.append($fragmentDisplay);
+    $time.textContent = `00:00:00`
+    timeExec();
 }
 
 //Generar valores ocultos
 const numHiddenGenerator = () => {
-    hidden1 = parseInt(Math.random() * 6 + 1);
-    hidden2 = parseInt(Math.random() * 6 + 1);
-    hidden3 = parseInt(Math.random() * 6 + 1);
-    hidden4 = parseInt(Math.random() * 6 + 1);
-    console.log('solucion ' + hidden1, hidden2, hidden3, hidden4)
+    for (let i = 0; i < 4; i++) {
+        hiddens[i] = parseInt(Math.random() * 6 + 1);
+        
+    }
+    console.log('solucion ' + hiddens)
 }
 // insertColors
 const write = (number, pos) => {
@@ -136,18 +183,6 @@ const write = (number, pos) => {
     $insertValue.classList.add(`btn-${number}`)
     jugada++
     insertValueUser.push(number)
-    
-    // if (insertValueUser.length == 4) {
-    //    let $btnsInsertColor = $btnInsertColor.querySelectorAll('.btn-select-color');
-    //     $btnsInsertColor.forEach((el)=>{
-    //         el.setAttribute('disable',true)
-    //     })
-    //     // evalue(insertValueUser[0], insertValueUser[1], insertValueUser[2], insertValueUser[3], hidden1,hidden2, hidden3, hidden4,pos);
-    //     //     jugada=1;
-    //     //     posibildad++;
-    //     //     insertValueUser=[];
-    // }
-   
 }
 
 // evalue

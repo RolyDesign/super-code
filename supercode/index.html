@@ -58,17 +58,21 @@
     </div>
 
     <!-- view game -->
-    <div class="dis-flex">
-        <div  class="caja">
-            <div class="flex-content bottom-spacer">
-                <img width="60" height="60" src="./assets/thinking-think.gif" alt="">
-                <h2 class="title">SuperCode!!! </h2>
+    <div class="d-flex vh-100 justify-content-evenly align-items-center">
+        <div  class="caja p-4">
+            <div class="d-flex mb-3 justify-content-between align-items-center">
+                <img  class="mt-n3" width="40" height="40" src="./assets/thinking-think.gif" alt="">
+                <h4 class="m-0">SuperCode!!! </h4>
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="text-info">Time <span class="text-warning ms-2" id="time"></span></span>
+                    <span class="text-info">Score <span class="text-warning ms-2" id="time">1000pts</span> </span>
+                </div>
             </div>
             <!-- pantallas dinamicas -->
             <div class="display"></div>
             <template id="view-game">
                 <div class="pantallas">
-                    <h2></h2>
+                    <h4></h4>
                     <div  class="p">
                         <div class="input-user"></div>
                         <div class="input-user"></div>
@@ -88,8 +92,7 @@
                 </div>
             </template>
             <!-- pantallas dinamicas -->
-
-            <h4  class=" sub-title ">Select color</h4>
+            <span  class=" d-block mb-2">Select color</span>
             <div id="btn" class="btngrid">
                 <button class="btn-1 btn-select-color" data-number="1"></button>
                 <button class="btn-2 btn-select-color" data-number="2"></button>
@@ -98,7 +101,7 @@
                 <button class="btn-5 btn-select-color" data-number="5"></button>
                 <button class="btn-6 btn-select-color" data-number="6"></button>
             </div>
-            <div class="btns-action">
+            <div class="btns-action mt-3">
                 <button data-number="1" class="btn-action btn btn-warning text-dark fs-5 "><i data-number="1" class="bi bi-skip-backward"></i></button>
                 <button data-number="2" class="btn-action btn btn-danger text-dark fs-5"><i data-number="2" class="bi bi-arrow-counterclockwise"></i></button>
                 <button data-number="3" class="btn-action btn btn-success text-dark fs-5"><i data-number="3" class="bi bi-check-circle"></i></button>

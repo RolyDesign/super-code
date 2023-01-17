@@ -1,9 +1,10 @@
 //DOM AccessElement
 const $TemplateViewGame = document.getElementById('view-game').content,
+    $modalOpt = document.getElementById('mod_select_mode'),
      $display = document.querySelector(".display"),
      $fragmentDisplay = document.createDocumentFragment(),
      $game_mode = document.getElementById('game_mode'),
-     $youWinModal = document.getElementById('modal_winned'),
+     $youWinModal = document.getElementById('mod_winned'),
      $undo = document.querySelector('.undo'),
      $btnInsertColor = document.getElementById('btn');
 
@@ -25,8 +26,7 @@ export const executeProgram = () => {
         d = t.dataset
          if(t.matches('button')){
             CantPosibilidades = d.number;
-            let modalOpt = document.getElementById('modal_select_mode') 
-            modalOpt.classList.add('none')
+            $modalOpt.classList.add('none')
             printViewGame();
         }
     })
@@ -123,16 +123,12 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
     let resReg = 0;
  
     //si pierde
-    if(posibildad == CantPosibilidades && !winned){
+    if(posibildad == CantPosibilidades){
       
-        let $textWinned =document.querySelector('.text-winned');
-        let $title = document.querySelector('#modal_winned .title');
-        let $sentimiento = document.querySelector('#modal_winned .sentimiento');
-        $sentimiento.setAttribute('src', './assets/crying-sobbing.gif' )
-        $title.textContent = ' Uppss!!!'
-        $textWinned.textContent = 'Has perdido, no te rindas'
+        $youWinModal.querySelector('.text-winned').textContent = 'Has perdido, no te rindas';
+        $youWinModal.querySelector('.title').textContent = ' Uppss!!!';
+        $youWinModal.querySelector('.sentimiento').setAttribute('src', './assets/crying-sobbing.gif' );
         $youWinModal.classList.remove('none');
-       
     }
 
     // si gana
@@ -141,12 +137,9 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         posEvalue2.classList.add('bien');
         posEvalue3.classList.add('bien');
         posEvalue4.classList.add('bien');
-        let $textWinned =document.querySelector('.text-winned');
-        let $title = document.querySelector('#modal_winned .title');
-        let $sentimiento = document.querySelector('#modal_winned .sentimiento');
-        $sentimiento.setAttribute('src', './assets/hasher-happy-sticker.gif' )
-        $title.textContent = ' Bravo!!!'
-        $textWinned.textContent = ' Felicidades Has Ganado'
+        $youWinModal.querySelector('.text-winned').textContent = ' Felicidades Has Ganado';
+        $youWinModal.querySelector('.title').textContent = ' Bravo!!!';
+        $youWinModal.querySelector('.sentimiento').setAttribute('src', './assets/hasher-happy-sticker.gif' );
         $youWinModal.classList.remove('none');
     }
 

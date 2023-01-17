@@ -10,7 +10,7 @@ body {
     background-color: rgb(6, 117, 121);
   
 }
-.d-flex{
+.dis-flex{
     height: 100vh;
     display: flex;
     justify-content: space-evenly;
@@ -151,20 +151,20 @@ body {
     justify-content: center;
     background-color: rgb(0, 0, 0);
   }
-   .modal-container{
+   .mod-container{
     width: 30rem;
     background-color: darkgray;
     padding: 2rem;
     border-radius: 0.5rem;
   }
-  .modal-content{
+  .mod-content{
     color: rgb(53, 53, 53);
   }
-  #modal_select_mode p{
+  #mod_select_mode p{
     margin-top: 1rem;
     text-align: center;
   }
-  #modal_select_mode .actions-init{
+  #mod_select_mode .actions-init{
     display: flex;
     justify-content: space-evenly;
   }
@@ -176,20 +176,20 @@ body {
     padding: 0.5rem;
     border-radius: 0.5rem;
   }
-  #modal_winned{
+  #mod_winned{
     background-color: rgba(0, 0, 0, 0.349);
   }
-  #modal_winned .modal-content{
+  #mod_winned .mod-content{
     display: flex;
     justify-content: center;
   }
-  #modal_winned img{
+  #mod_winned img{
     width: 150px;
     height:150px;
     margin-right: 1.5rem;
     margin-top: -1.5rem;
   }
-  #modal_winned .title{
+  #mod_winned .title{
    text-align: start;
    margin-bottom: 0.5rem;
   }
@@ -228,7 +228,7 @@ body {
   
   
   @media only screen and (max-width: 768px) {
-    .d-flex{
+    .dis-flex{
         height: 100vh;
         width: 100vw;
         display: flex;
@@ -251,7 +251,7 @@ body {
     .r, .p {
         height: 2.5rem;
     }
-    .modal-container{
+    .mod-container{
         width: 90%;
         background-color: darkgray;
         padding: 2rem;
@@ -275,10 +275,10 @@ body {
     #game_again button{
         width:7rem;
     }
-    #modal_winned .title{
+    #mod_winned .title{
         font-size: 2rem;
     }
-    #modal_winned .modal-content{
+    #mod_winned .mod-content{
        align-items: center;
     }
     .text-winned{

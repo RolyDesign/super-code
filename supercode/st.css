@@ -239,21 +239,19 @@ body {
         justify-content: center;
         align-items: center;
     }
-    body{
-        overflow: hidden !important;
-    }
+   
     /* For mobile phones: */
     .caja {
         max-width: 90vw;
         min-width: 90vw;
-        padding: 0.8rem 1.5rem;
+        padding: 0.3rem 1rem;
     }
     
     .pantallas {
-        grid-template-columns: 0.5rem 1fr 5rem;
+        grid-template-columns: 0.5rem 1fr 3rem;
     }
     .r, .p {
-        height: 2.5rem;
+        height: 2rem;
     }
     .mod-container{
         width: 90%;

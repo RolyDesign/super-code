@@ -65,6 +65,8 @@ let seconds,
     }, 1000);
 }
 
+lalalalalalalalalalalalalalalala
+
 // execute program supercode
 export const executeProgram = () => {
     if(window.localStorage.getItem('SC-Score') == null){

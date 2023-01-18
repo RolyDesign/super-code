@@ -12,7 +12,10 @@ const $TemplateViewGame = document.getElementById('view-game').content,
      $time = document.getElementById('time'),
      $btnsAction = document.querySelector('.btns-action'),
      $score = document.getElementById('score');
-
+     
+let posibildad = 1;
+let jugada = 1;
+let insertValueUser = [];
 let CantPosibilidades = 0;
 let hiddens = [];
 let intervalTime;
@@ -20,11 +23,6 @@ let countSeconds = 1,
     countMinutes = 0,
     countHours = 0;
 
-
-   
-let posibildad = 1;
-let jugada = 1;
-let insertValueUser = [];
 
 const timeExec = () => {
 let seconds,

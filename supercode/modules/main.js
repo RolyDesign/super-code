@@ -12,7 +12,7 @@ const $TemplateViewGame = document.getElementById('view-game').content,
      $time = document.getElementById('time'),
      $btnsAction = document.querySelector('.btns-action'),
      $score = document.getElementById('score');
-     
+
 let posibildad = 1;
 let jugada = 1;
 let insertValueUser = [];
@@ -65,7 +65,7 @@ let seconds,
     }, 1000);
 }
 
-// execute program
+// execute program supercode
 export const executeProgram = () => {
     if(window.localStorage.getItem('SC-Score') == null){
         window.localStorage.setItem('SC-Score','0');

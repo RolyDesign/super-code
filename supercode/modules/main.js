@@ -16,7 +16,10 @@ const $TemplateViewGame = document.getElementById('view-game').content,
 let CantPosibilidades = 0;
 let hiddens = [];
 let intervalTime;
-let TranscurredTime = 0;
+let countSeconds = 1,
+    countMinutes = 0,
+    countHours = 0;
+
 
    
 let posibildad = 1;
@@ -24,10 +27,7 @@ let jugada = 1;
 let insertValueUser = [];
 
 const timeExec = () => {
-    let countSeconds = 1,
-    countMinutes = 0,
-    countHours = 0,
-    seconds,
+let seconds,
     minutes,
     hours;
     intervalTime = setInterval(() => {
@@ -62,10 +62,9 @@ const timeExec = () => {
         }else{
             hours = countHours;
         }
-        $time.textContent = `${hours}:${minutes}:${seconds}`
+        $time.textContent = `${hours}:${minutes}:${seconds}`;
+        
     }, 1000);
-    TranscurredTime =  (hours * 60) + minutes + (1 / seconds);
-    
 }
 
 // execute program
@@ -149,7 +148,9 @@ const playAgain = () => {
     posibildad = 1;
     jugada = 1;
     insertValueUser = [];
-    TranscurredTime=0;
+    countSeconds = 1;
+    countMinutes = 0;
+    countHours = 0;
     for (let i = 0; i < CantPosibilidades; i++) {
         $display.removeChild($display.firstElementChild)
     }
@@ -213,6 +214,7 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
         $youWinModal.querySelector('button').textContent= 'Volver a jugar';
         $youWinModal.classList.remove('none');
         clearInterval(intervalTime);
+        
     }
 
     // si gana then
@@ -409,15 +411,20 @@ function evalue(e1, e2, e3, e4, h1, h2, h3, h4,pos) {
 };
 
 
-
-
-
 const CalcScore = (pos) => {
-    let score = ((6000 / CantPosibilidades) * pos) + parseInt(window.localStorage.getItem('SC-Score')) ;
-    window.localStorage.setItem('SC-Score',`${score}`)
-  
-    return score
+    let score;
+    if(CantPosibilidades == 8 ){
+        score = (400 / CantPosibilidades) * (CantPosibilidades - pos) + (400 / CantPosibilidades)  + parseInt(window.localStorage.getItem('SC-Score')) ;
+    }else if(CantPosibilidades == 7){
+        score = (500 / CantPosibilidades) * (CantPosibilidades - pos) + (500 / CantPosibilidades)  + parseInt(window.localStorage.getItem('SC-Score')) ;
+    }else{
+        score = (600 / CantPosibilidades) * (CantPosibilidades - pos) + (600 / CantPosibilidades)  + parseInt(window.localStorage.getItem('SC-Score')) ;
+    }
+    window.localStorage.setItem('SC-Score',`${Math.floor(score)}`)
+    
 }
+
+
 
 
 

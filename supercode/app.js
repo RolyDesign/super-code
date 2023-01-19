@@ -1,3 +1,5 @@
 import {executeProgram} from './modules/main.js';
 
-executeProgram();
+document.addEventListener('load',executeProgram() ,false )
+
+
